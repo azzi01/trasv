@@ -1,0 +1,80 @@
+# trasv
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carlsberg Lab - Guess the Secret Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #FFC0CB ;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+        input {
+            padding: 10px;
+            width: 200px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .closing-text {
+            margin-top: 20px;
+            font-style: italic;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WELCOME TO THE CARLSBERG LAB</h1>
+        <p>Guess the secret code:</p>
+        <input type="number" id="guessInput" placeholder="Enter your guess" min="0">
+        <button onclick="checkGuess()">Submit</button>
+        <p id="result"></p>
+        <p class="closing-text">" In every reaction, pH reveals a piece of the universe’s chemical puzzle  "</p>
+    </div>
+
+    <script>
+        function checkGuess() {
+            let guess = parseInt(document.getElementById("guessInput").value);
+            let resultText = "";
+
+            if (isNaN(guess)) {
+                resultText = "Enter a number to make a guess!";
+            } else if (guess === 7777) {
+                resultText = "Good job, you finally got the answer!";
+            } else if ([3, 4, 6, 9, 11, 14].includes(guess)) {
+                resultText = "Nice try, keep on guessing.";
+            } else {
+                resultText = "You can do it ! Try again.";
+            }
+
+            document.getElementById("result").innerText = resultText;
+        }
+    </script>
+</body>
+</html>
